@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PeopleFormComponent } from './components/people-form/people-form.component';
 import { PeopleTableComponent } from './components/people-table/people-table.component';
 import { PeoplePublicComponent } from './public/people-public.component';
+import { PublicRoutingModule } from './people-routing.module';
 
 @NgModule({
   declarations: [
@@ -10,6 +11,6 @@ import { PeoplePublicComponent } from './public/people-public.component';
     PeopleTableComponent,
     PeoplePublicComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, PublicRoutingModule],
 })
 export class PeopleModule {}

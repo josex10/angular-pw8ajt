@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PeoplePublicComponent } from './modules/people/public/people-public.component';
 
 const routes: Routes = [
   {
     path: 'people',
-    component: PeoplePublicComponent,
+    loadChildren: () =>
+      import('./modules/people/people.module').then((m) => m.PeopleModule),
   },
   {
     path: '**',
     redirectTo: 'people',
+    pathMatch: 'full',
   },
 ];
 @NgModule({
