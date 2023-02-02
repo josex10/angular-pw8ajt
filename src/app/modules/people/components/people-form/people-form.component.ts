@@ -19,9 +19,9 @@ export class PeopleFormComponent {
     ]),
   });
 
-  constructor(private store: Store) {}
+  // constructor(private store: Store) {}
 
-  fnAddPerson() {
+  fnSavePerson() {
     if (this.personForm.valid) {
       /*
       this.anyUserLoginAuth = {

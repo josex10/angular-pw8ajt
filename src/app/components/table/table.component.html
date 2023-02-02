@@ -1,1 +1,18 @@
-<h1>Table</h1>
+<table>
+  <thead>
+    <th *ngFor="let column of input_table_columns">{{ column.name }}</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of input_table_data">
+      <td *ngFor="let key of data | tableKeys">{{data}</td>
+    </tr>
+  </tbody>
+  <tr>
+    <th>Month</th>
+    <th>Savings</th>
+  </tr>
+  <tr>
+    <td>January</td>
+    <td>$100</td>
+  </tr>
+</table>

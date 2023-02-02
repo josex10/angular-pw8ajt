@@ -1,6 +1,5 @@
 <h1>Add Person</h1>
 
-<!--
 <form [formGroup]="personForm">
   <app-input-component
     input-label="Name"
@@ -15,5 +14,9 @@
     name="frmCtrlLastame"
     ngDefaultControl
   ></app-input-component>
+
+  <app-button-component
+    button-label="Save"
+    (clickResponse)="fnSavePerson()"
+  ></app-button-component>
 </form>
--->

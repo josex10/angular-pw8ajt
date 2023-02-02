@@ -1,1 +1,7 @@
-<h1>This is a button</h1>
+<button
+  type="button"
+  (click)="fnButtonClicked($event)"
+  [disabled]="button_disable"
+>
+  {{ button_label }}
+</button>
