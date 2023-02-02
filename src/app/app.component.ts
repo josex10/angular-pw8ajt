@@ -2,12 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  template: `
+  <app-header-component></app-header-component>
+  <router-outlet></router-outlet>
+  `,
 })
-export class AppComponent implements OnInit {
-  ngOnInit(): void {
-    console.log('initializing');
-  }
-  title = 'Lazy loading feature modules';
-}
+export class AppComponent {}

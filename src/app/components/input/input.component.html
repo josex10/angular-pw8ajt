@@ -1,1 +1,6 @@
-<h1>Input</h1>
+<label for="lname">{{ input_label }}:</label>
+<input
+  type="{{ input_type }}"
+  [(ngModel)]="input_value"
+  [disabled]="input_disabled"
+/>

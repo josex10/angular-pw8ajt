@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { ButtonComponent } from './button/button.component';
 import { TableComponent } from './table/table.component';
 import { InputComponent } from './input/input.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,6 @@ import { InputComponent } from './input/input.component';
     InputComponent,
   ],
   exports: [HeaderComponent, ButtonComponent, TableComponent, InputComponent],
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
 })
 export class ComponentsModule {}
