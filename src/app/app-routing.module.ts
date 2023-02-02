@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AppComponent } from './app.component';
+import { PeoplePublicComponent } from './modules/people/public/people-public.component';
 
 const routes: Routes = [
   {
@@ -13,6 +15,7 @@ const routes: Routes = [
     pathMatch: 'full',
   },
 ];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
