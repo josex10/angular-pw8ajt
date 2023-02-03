@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { ITableColumns, IPerson } from '../../../../core/interfaces';
-import { PersonService } from '../../../../core/services/person.service';
+import { personListAction } from '../../../../core/ngrx/actions/person.action';
+import { personListSelector } from '../../../../core/ngrx/selectors/person.selector';
 
 @Component({
   selector: 'app-people-table-component',
@@ -18,12 +19,14 @@ export class PeopleTableComponent implements OnInit {
   ];
   tableData$: Observable<IPerson[]>;
 
-  constructor(
-    private personService: PersonService,
-    private store: Store<any>
-  ) {}
+  constructor(private store: Store<any>) {}
 
   ngOnInit(): void {
-    this.tableData$ = this.personService.fnGetAllPeople();
+    this.store.dispatch(personListAction());
+    this.tableData$ = this.store.select(personListSelector).pipe(
+      map((people) => {
+        return people;
+      })
+    );
   }
 }

@@ -1,13 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { map, Observable } from 'rxjs';
+import { IPerson } from '../../../../core/interfaces';
+import { personListSelector } from '../../../../core/ngrx/selectors/person.selector';
+import * as uuid from 'uuid';
+import { personListActionSuccess } from '../../../../core/ngrx/actions/person.action';
 
 @Component({
   selector: 'app-people-form-component',
   templateUrl: './people-form.component.html',
   styleUrls: ['./people-form.component.css'],
 })
-export class PeopleFormComponent {
+export class PeopleFormComponent implements OnInit {
   public personForm = new FormGroup({
     frmCtrlName: new FormControl('', [
       Validators.required,
@@ -19,17 +24,27 @@ export class PeopleFormComponent {
     ]),
   });
 
-  // constructor(private store: Store) {}
+  personList: IPerson[] = [];
+
+  constructor(private store: Store) {}
+
+  ngOnInit(): void {
+    this.store.select(personListSelector).subscribe((data) => {
+      this.personList = data;
+    });
+  }
 
   fnSavePerson() {
     if (this.personForm.valid) {
-      /*
-      this.anyUserLoginAuth = {
-        clm_username: this.loginForm.get('frmCtrlUsername')?.value!, 
-        clm_password: this.loginForm.get('frmCtrlPassword')?.value!
-      }
-      this.store.dispatch(authSystemUserLoginAction({userLogingAuth:this.anyUserLoginAuth}));
-      */
+      console.log('valid');
+      const person: IPerson = {
+        id: uuid.v4(),
+        name: this.personForm.get('frmCtrlName')?.value!,
+        lastname: this.personForm.get('frmCtrlLastame')?.value!,
+      };
+      this.store.dispatch(
+        personListActionSuccess({ personList: this.personList })
+      );
     }
   }
 
