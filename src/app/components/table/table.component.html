@@ -4,7 +4,8 @@
   </thead>
   <tbody>
     <tr *ngFor="let data of input_table_data">
-      <td *ngFor="let key of data | tableKeys">{{data}</td>
+      <td *ngFor="let key of data | tableKeys">{{ data[key] }}</td>
+      <td>DELETE</td>
     </tr>
   </tbody>
   <tr>

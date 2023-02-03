@@ -1,4 +1,4 @@
 <app-table-component
   [input-table-columns]="tableColumns"
-  [input-table-data]="tableData"
+  [input-table-data]="tableData$ | async"
 ></app-table-component>
