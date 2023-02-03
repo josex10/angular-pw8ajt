@@ -6,6 +6,8 @@ import { IPerson } from '../../../../core/interfaces';
 import { personListSelector } from '../../../../core/ngrx/selectors/person.selector';
 import * as uuid from 'uuid';
 import { personListActionSuccess } from '../../../../core/ngrx/actions/person.action';
+import { take } from 'rxjs/operators';
+import { AppState } from '../../../../core/ngrx/app.state';
 
 @Component({
   selector: 'app-people-form-component',
@@ -24,15 +26,11 @@ export class PeopleFormComponent implements OnInit {
     ]),
   });
 
-  personList: IPerson[] = [];
+  private personList: IPerson[] = [];
 
-  constructor(private store: Store) {}
+  constructor(private store: Store<AppState>) {}
 
-  ngOnInit(): void {
-    this.store.select(personListSelector).subscribe((data) => {
-      this.personList = data;
-    });
-  }
+  ngOnInit(): void {}
 
   fnSavePerson() {
     if (this.personForm.valid) {
@@ -42,10 +40,15 @@ export class PeopleFormComponent implements OnInit {
         name: this.personForm.get('frmCtrlName')?.value!,
         lastname: this.personForm.get('frmCtrlLastame')?.value!,
       };
-      this.personList.push(person);
-      this.store.dispatch(
-        personListActionSuccess({ personList: this.personList })
-      );
+      this.store
+        .pipe(take(1))
+        .subscribe((s) => (this.personList = s.personListState));
+
+      console.log(this.personList);
+      const tmp: IPerson[] = this.personList.map((obj) => obj);
+      console.log(tmp);
+      tmp.push(person);
+      this.store.dispatch(personListActionSuccess({ personList: tmp }));
     }
   }
 
