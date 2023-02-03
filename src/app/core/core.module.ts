@@ -7,7 +7,7 @@ import { ROOT_REDUCERS } from './ngrx/app.state';
 
 @NgModule({
   declarations: [TableKeysPipe],
-  imports: [CommonModule, HttpClientModule, StoreModule.forRoot(ROOT_REDUCERS)],
+  imports: [CommonModule, HttpClientModule],
   exports: [TableKeysPipe],
 })
 export class CoreModule {}
