@@ -8,12 +8,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [TableKeysPipe],
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    StoreModule.forRoot(ROOT_REDUCERS),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-  ],
+  imports: [CommonModule, HttpClientModule],
   exports: [TableKeysPipe],
 })
 export class CoreModule {}
