@@ -27,22 +27,41 @@ export class PeopleFormComponent implements OnInit {
   });
 
   private personList: IPerson[] = [];
+  private personList$: Observable<IPerson[]>;
 
   constructor(private store: Store<AppState>) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.personList$ = this.store.select(personListSelector);
+    this.personList$ = this.store.select(personListSelector).pipe(
+      map((person) => {
+        console.log(person);
+        const personList = person.map((tmpPerson) => tmpPerson);
+
+        return personList;
+      })
+    );
+  }
 
   fnSavePerson() {
     if (this.personForm.valid) {
-      console.log('valid');
       const person: IPerson = {
         id: uuid.v4(),
         name: this.personForm.get('frmCtrlName')?.value!,
         lastname: this.personForm.get('frmCtrlLastame')?.value!,
       };
+      /*
       this.store
         .pipe(take(1))
         .subscribe((s) => (this.personList = s.personListState));
+        */
+      console.log(this.personList);
+      this.personList$.pipe(
+        map((obj) => {
+          console.log(obj);
+          this.personList = obj.map((tmp) => tmp);
+        })
+      );
 
       console.log(this.personList);
       const tmp: IPerson[] = this.personList.map((obj) => obj);

@@ -11,6 +11,6 @@ export const personListActionSuccess = createAction(
 );
 
 export const personListAddNewAction = createAction(
-  '[Person List Action Add New] Add new person to List Success.',
+  '[Person List Action Add New] Add new person to List.',
   props<{ person: IPerson }>()
 );
