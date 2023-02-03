@@ -6,6 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
 import { ROOT_REDUCERS } from './core/ngrx/app.state';
+import { PersonEffects } from './core/ngrx/effects/person.effect';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +17,7 @@ import { ROOT_REDUCERS } from './core/ngrx/app.state';
     ComponentsModule,
     StoreModule.forRoot(ROOT_REDUCERS),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    EffectsModule.forRoot([PersonEffects]),
   ],
   bootstrap: [AppComponent],
 })

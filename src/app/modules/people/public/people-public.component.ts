@@ -5,8 +5,4 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './people-public.component.html',
   styleUrls: ['./people-public.component.css'],
 })
-export class PeoplePublicComponent implements OnInit {
-  ngOnInit(): void {
-    console.log('hello from angular');
-  }
-}
+export class PeoplePublicComponent {}

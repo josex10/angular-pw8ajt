@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ITableColumns, IPerson } from '../../../../core/interfaces';
 import { PersonService } from '../../../../core/services/person.service';
@@ -15,19 +16,12 @@ export class PeopleTableComponent implements OnInit {
     { name: 'Lastname', key: 'lastname' },
     { name: 'Actions', key: 'actions' },
   ];
-
-  /*
-  tableData: IPerson[] = [
-    { id: 1, name: 'Jose', lastname: 'Badilla' },
-    { id: 2, name: 'Charlie', lastname: 'Hurch' },
-    { id: 3, name: 'Andrew', lastname: 'Tommr' },
-    { id: 4, name: 'Phill', lastname: 'Nireich' },
-    { id: 5, name: 'Elaine', lastname: 'Straut' },
-  ];
-  */
   tableData$: Observable<IPerson[]>;
 
-  constructor(private personService: PersonService) {}
+  constructor(
+    private personService: PersonService,
+    private store: Store<any>
+  ) {}
 
   ngOnInit(): void {
     this.tableData$ = this.personService.fnGetAllPeople();
