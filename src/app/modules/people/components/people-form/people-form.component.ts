@@ -42,6 +42,7 @@ export class PeopleFormComponent implements OnInit {
         name: this.personForm.get('frmCtrlName')?.value!,
         lastname: this.personForm.get('frmCtrlLastame')?.value!,
       };
+      this.personList.push(person);
       this.store.dispatch(
         personListActionSuccess({ personList: this.personList })
       );
