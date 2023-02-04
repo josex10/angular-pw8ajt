@@ -1,10 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, map } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 import { ETableAction } from '../../../../core/enums';
-import { ITableColumns, IPerson } from '../../../../core/interfaces';
-import { ITableConfig } from '../../../../core/interfaces/table-config.interface';
-import { personListAction } from '../../../../core/ngrx/actions/person.action';
+import {
+  ITableColumns,
+  IPerson,
+  ITableActionClick,
+  ITableConfig
+} from '../../../../core/interfaces';
+import {
+  personListAction,
+  personListActionSuccess,
+} from '../../../../core/ngrx/actions/person.action';
 import { AppState } from '../../../../core/ngrx/app.state';
 import { personListSelector } from '../../../../core/ngrx/selectors/person.selector';
 
@@ -30,6 +37,7 @@ export class PeopleTableComponent implements OnInit {
     actions: [ETableAction.REMOVE],
   };
   public tableData$: Observable<IPerson[]>;
+  private personList: IPerson[] = [];
 
   constructor(private store: Store<AppState>) {}
 
@@ -40,5 +48,21 @@ export class PeopleTableComponent implements OnInit {
         return people;
       })
     );
+  }
+
+  actionClicked(data: ITableActionClick) {
+    this.fnRemovePerson(data.data);
+  }
+
+  fnRemovePerson(person: IPerson) {
+    this.store
+      .select(personListSelector)
+      .subscribe((data) => (this.personList = data));
+
+    const removeData = this.personList.filter(function (value) {
+      return value.id !== person.id;
+    });
+
+    this.store.dispatch(personListActionSuccess({ personList: removeData }));
   }
 }

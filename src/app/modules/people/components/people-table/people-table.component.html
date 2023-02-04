@@ -2,4 +2,5 @@
   [input-table-columns]="tableColumns"
   [input-table-config]="tableConfig"
   [input-table-data]="tableData$ | async"
+  (clickResponse)="actionClicked($event)"
 ></app-table-component>
