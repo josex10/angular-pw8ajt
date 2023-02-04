@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
+import { ETableAction } from '../../../../core/enums';
 import { ITableColumns, IPerson } from '../../../../core/interfaces';
 import { personListAction } from '../../../../core/ngrx/actions/person.action';
+import { AppState } from '../../../../core/ngrx/app.state';
 import { personListSelector } from '../../../../core/ngrx/selectors/person.selector';
 
 @Component({
@@ -12,14 +14,19 @@ import { personListSelector } from '../../../../core/ngrx/selectors/person.selec
 })
 export class PeopleTableComponent implements OnInit {
   tableColumns: ITableColumns[] = [
-    { name: 'Id', key: 'id' },
-    { name: 'Name', key: 'name' },
-    { name: 'Lastname', key: 'lastname' },
-    { name: 'Actions', key: 'actions' },
+    { name: 'Id', key: 'id', isHidden: true },
+    { name: 'Name', key: 'name', isHidden: false },
+    { name: 'Lastname', key: 'lastname', isHidden: false },
+    {
+      name: 'Actions',
+      key: 'actions',
+      isHidden: false,
+      action: ETableAction.REMOVE,
+    },
   ];
   tableData$: Observable<IPerson[]>;
 
-  constructor(private store: Store<any>) {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.store.dispatch(personListAction());

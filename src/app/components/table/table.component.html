@@ -1,11 +1,24 @@
 <table>
   <thead>
-    <th *ngFor="let column of input_table_columns">{{ column.name }}</th>
+    <th *ngFor="let column of input_table_columns">
+      <span *ngIf="!column.isHidden">
+        {{ column.name }}
+      </span>
+    </th>
   </thead>
   <tbody>
-    <tr *ngFor="let data of input_table_data">
-      <td *ngFor="let key of data | tableKeys">{{ data[key] }}</td>
-      <td>DELETE</td>
+    <tr *ngFor="let data of input_table_data; let n = index">
+      <td *ngFor="let key of data | tableKeys; let i = index">
+        <span>
+          {{ data[key] }}
+          {{ key }}
+          {{ n }}
+          {{ i }}
+          {{ input_table_columns[n].isHidden }}
+        </span>
+      </td>
+      <td *ngIf="data.action === tableAction.REMOVE">REMOVE</td>
+      <td *ngIf="data.action === tableAction.EDIT">EDIT</td>
     </tr>
   </tbody>
 </table>

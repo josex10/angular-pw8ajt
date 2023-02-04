@@ -7,6 +7,18 @@
     name="frmCtrlName"
     ngDefaultControl
   ></app-input-component>
+  <div
+    *ngIf="
+      personFormControl['frmCtrlName'].invalid &&
+      (personFormControl['frmCtrlName'].dirty ||
+        personFormControl['frmCtrlName'].touched)
+    "
+    class="fmrErrorMessage"
+  >
+    <div *ngIf="personFormControl['frmCtrlName'].errors?.['required']">
+      <span>Name is required.</span>
+    </div>
+  </div>
 
   <app-input-component
     input-label="Lastname"
@@ -14,9 +26,22 @@
     name="frmCtrlLastame"
     ngDefaultControl
   ></app-input-component>
+  <div
+    *ngIf="
+      personFormControl['frmCtrlLastame'].invalid &&
+      (personFormControl['frmCtrlLastame'].dirty ||
+        personFormControl['frmCtrlLastame'].touched)
+    "
+    class="fmrErrorMessage"
+  >
+    <div *ngIf="personFormControl['frmCtrlLastame'].errors?.['required']">
+      <span>Lastname is required.</span>
+    </div>
+  </div>
 
   <app-button-component
     button-label="Save"
+    [button-disable]="!personForm.valid"
     (clickResponse)="fnSavePerson()"
   ></app-button-component>
 </form>
