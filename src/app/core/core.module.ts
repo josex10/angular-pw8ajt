@@ -1,6 +1,13 @@
-import { NgModule, isDevMode } from '@angular/core';
+/**
+ * Angular Modules
+ */
+import { NgModule, } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+
+/**
+ * Components
+ */
 import { TableKeysPipe } from './pipes/table-keys.pipe';
 
 @NgModule({

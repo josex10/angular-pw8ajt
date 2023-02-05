@@ -1,5 +1,4 @@
 import { createSelector } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import { IPerson } from '../../interfaces';
 import { AppState } from '../app.state';
 

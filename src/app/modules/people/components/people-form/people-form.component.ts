@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { Store } from '@ngrx/store';
-import { IPerson } from '../../../../core/interfaces';
-import { personListSelector } from '../../../../core/ngrx/selectors/person.selector';
-import * as uuid from 'uuid';
-import { personListActionSuccess } from '../../../../core/ngrx/actions/person.action';
 import { AppState } from '../../../../core/ngrx/app.state';
+import { personListSelector } from '../../../../core/ngrx/selectors';
+import { personListActionSuccess } from '../../../../core/ngrx/actions';
+
+import { IPerson } from '../../../../core/interfaces';
+
+import * as uuid from 'uuid';
 
 @Component({
   selector: 'app-people-form-component',

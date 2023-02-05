@@ -1,19 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Store } from '@ngrx/store';
+import { AppState } from '../../../../core/ngrx/app.state';
+import {
+  personListAction,
+  personListActionSuccess,
+} from '../../../../core/ngrx/actions';
+
+import { personListSelector } from '../../../../core/ngrx/selectors';
+
 import { Observable, map, tap } from 'rxjs';
+
 import { ETableAction } from '../../../../core/enums';
+
 import {
   ITableColumns,
   IPerson,
   ITableActionClick,
   ITableConfig,
 } from '../../../../core/interfaces';
-import {
-  personListAction,
-  personListActionSuccess,
-} from '../../../../core/ngrx/actions/person.action';
-import { AppState } from '../../../../core/ngrx/app.state';
-import { personListSelector } from '../../../../core/ngrx/selectors/person.selector';
 
 @Component({
   selector: 'app-people-table-component',

@@ -1,13 +1,28 @@
+/**
+ * Angular Modules
+ */
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
+/**
+ * ngrx
+ */
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ComponentsModule } from './components/components.module';
+import { EffectsModule } from '@ngrx/effects';
 import { ROOT_REDUCERS } from './core/ngrx/app.state';
 import { PersonEffects } from './core/ngrx/effects/person.effect';
-import { EffectsModule } from '@ngrx/effects';
+
+/**
+ * Routing
+ */
+import { AppRoutingModule } from './app-routing.module';
+
+/**
+ * Components
+ */
+import { AppComponent } from './app.component';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [AppComponent],

@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { IPerson } from '../../interfaces';
-import { personListActionSuccess } from '../actions/person.action';
+import { personListActionSuccess } from '../actions';
 
 const initialState: IPerson[] = [];
 
