@@ -1,6 +1,13 @@
-<label for="lname">{{ input_label }}:</label>
-<input
-  type="{{ input_type }}"
-  [(ngModel)]="input_value"
-  [disabled]="input_disabled"
-/>
+<div class="container">
+  <div class="label-container">
+    <label for="lname">{{ input_label }}</label>
+  </div>
+
+  <div class="input-container">
+    <input
+      type="{{ input_type }}"
+      [(ngModel)]="input_value"
+      [disabled]="input_disabled"
+    />
+  </div>
+</div>

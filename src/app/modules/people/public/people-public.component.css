@@ -1,8 +1,18 @@
-.container {
-  margin: 2vh;
+.container-table {
+  width: 70%;
+  margin-right: 5vw;
+}
+
+.container-form {
+  width: 30%;
+}
+
+.title {
+  padding: 2vh;
+  background-color: #f7f7f7;
 }
 
 .container-data {
+  margin: 2vh;
   display: flex;
-  justify-content: space-between;
 }

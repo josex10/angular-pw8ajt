@@ -1,4 +1,4 @@
 export enum ETableAction {
-  REMOVE = 'REMOVE',
-  EDIT = 'EDIT',
+  DELETE = 'Delete',
+  EDIT = 'Edit',
 }

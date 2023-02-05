@@ -1,7 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  background-color: white;
+  background-color: #3071c5;
   margin: 0px;
   padding: 0px;
   height: 10vh;
@@ -14,7 +14,7 @@
 }
 
 .header-img-logo {
-  height: 8vh;
+  height: 3vh;
 }
 
 .watch {

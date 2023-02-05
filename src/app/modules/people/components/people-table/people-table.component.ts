@@ -6,7 +6,7 @@ import {
   ITableColumns,
   IPerson,
   ITableActionClick,
-  ITableConfig
+  ITableConfig,
 } from '../../../../core/interfaces';
 import {
   personListAction,
@@ -34,7 +34,7 @@ export class PeopleTableComponent implements OnInit {
 
   public tableConfig: ITableConfig = {
     columns: this.tableColumns,
-    actions: [ETableAction.REMOVE],
+    actions: [ETableAction.DELETE],
   };
   public tableData$: Observable<IPerson[]>;
   private personList: IPerson[] = [];

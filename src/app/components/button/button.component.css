@@ -1,0 +1,11 @@
+button {
+  border-color: #3071c5;
+  height: 4vh;
+  background-color: white;
+  border-radius: 1vh;
+}
+
+button:hover {
+  background-color: #3071c5;
+  color: white;
+}
