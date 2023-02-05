@@ -1,0 +1,8 @@
+.container {
+  margin: 2vh;
+}
+
+.container-data {
+  display: flex;
+  justify-content: space-between;
+}
